@@ -28,12 +28,25 @@ class App extends Component {
     });
   };
 
+  deleteItem = (position) => {
+    // alert(index);
+    const newArray = this.state.random.filter((item, index) => {
+      return position != index
+    })
+    this.setState({
+      random:newArray
+    })
+  }
+
   render() {
     return (
       <View style={styles.mainView}>
         <SafeAreaView>
           <Generator add={this.onAddRandom} />
-          <ListItem items={this.state.random} />
+          <ListItem 
+            items={this.state.random}
+            delete={this.deleteItem}
+          />
         </SafeAreaView>
       </View>
     );

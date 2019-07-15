@@ -1,12 +1,16 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 
 const ListItem = (props) => {
   return (
     props.items.map((item, id) => (
-      <View key={id} style={styles.listItemStyle}>
+      <TouchableOpacity 
+        key={id} 
+        style={styles.listItemStyle}
+        onPress={() => props.delete(id)}
+      >
         <Text>{item}</Text>
-      </View>
+      </TouchableOpacity>
     ))
     
   )
