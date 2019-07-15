@@ -1,0 +1,1 @@
+React Native project focusing on some more modern details and techniques aligned with 2019 changes to React Native.
