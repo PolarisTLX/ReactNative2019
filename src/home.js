@@ -6,17 +6,41 @@ import {
   View,
   Text,
   StatusBar,
-  Button
+  Button,
+  Image
 } from 'react-native';
 
 import Generator from './generator';
 import ListItem from './listItem';
 
+import LogoTitle from './logo';
+import hamLogo from './images/hamlogo.png';
+
 class HomeScreen extends Component {
 
   static navigationOptions = {
-    title: 'Home Screen'
-  }
+    title: 'Home Screen',
+    // to apply an image logo instead of a title:
+    headerTitle: LogoTitle,
+    // these logos cannot be just some string or image, they must be a component or JSX:
+    headerLeft: (
+      <Button title={"B"}/>
+    ),
+    headerRight: (
+      // <Button onPress={() => this.props.navigation.navigate('Users')}>
+        <Image
+          source={hamLogo}
+          style={{ width: 30, height: 30 }}
+        />
+      // </Button>
+    ),
+    // headerBackTitle: "Replaced the arrow!" // not on android?
+    // headerTitleStyle: {
+    //   flex: 1,
+    //   textAlign: 'center',
+    //   alignItems: 'center'
+    // }
+  };
 
   state = {
     random: [20, 837]

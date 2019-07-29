@@ -12,6 +12,7 @@ import { createStackNavigator, createAppContainer } from 'react-navigation';
 import HomeScreen from './src/home';
 import UserScreen from './src/users';
 
+import LogoTitle from './src/logo';
 
 class App extends Component {
 
@@ -31,7 +32,9 @@ const AppNavigator = createStackNavigator({
     screen: HomeScreen,
     // can also come here to apply style to just the home screen navbar:
     // navigationOptions: ({ navigation }) => ({
-    //   title: `Home`,
+    //   title: 'Home Screen',
+    //   to apply an image logo instead of a title:
+    //   headerTitle: LogoTitle
     // }),
   },
   Users: {
@@ -50,13 +53,13 @@ const AppNavigator = createStackNavigator({
       textAlign: 'center',
       fontWeight: 'bold',
       color: 'white'
-    }
+    },
+
   },
   // mode: 'modal',  //does not work on android
   onTransitionStart:() => { 
     alert("This is a Navigation 'onTransitionStart' function") 
   }
-
 })
 
 const styles = StyleSheet.create({
