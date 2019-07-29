@@ -51,7 +51,14 @@ class HomeScreen extends Component {
 
           <Button 
             title="Go to users"
-            onPress={() => this.props.navigation.navigate('Users')}
+            // onPress={() => this.props.navigation.navigate('Users')}
+            onPress={
+              () => this.props.navigation.navigate('Users',{
+                userId: 12,
+                userName: 'Betty',
+                userLastName: 'Cooper'
+              })
+            }
           />
         </SafeAreaView>
       </View>
