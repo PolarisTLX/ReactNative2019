@@ -60,6 +60,7 @@ class HomeScreen extends Component {
               })
             }
           />
+          <Text>{this.props.navigation.getParam('message','N/A')}</Text>
         </SafeAreaView>
       </View>
     );

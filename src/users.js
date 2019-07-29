@@ -17,6 +17,9 @@ class UserScreen extends Component {
     // console.warn(this.props);  // cool alternative that appears right on the bottom of the Emulator
 
     const userId = this.props.navigation.getParam('userId');
+    // if the info doesn't get passsed properly, or there is some kind of error with the data you are expecting:
+    // then add a default value like so:
+    // const userId = this.props.navigation.getParam('userId', 'N/A');
     const userName = this.props.navigation.getParam('userName');
     const userLastName = this.props.navigation.getParam('userLastName');
 
@@ -29,7 +32,10 @@ class UserScreen extends Component {
           <Text>User Last Name: {userLastName}</Text>
           <Button
             title="Go to Home"
-            onPress={() => this.props.navigation.navigate('Home')}
+            onPress={() => this.props.navigation.navigate('Home', {
+                message: 'Hello sent back from Users screen'
+              })
+            }
           />
           <Button
             title="Go Back"
