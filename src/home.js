@@ -14,6 +14,10 @@ import ListItem from './listItem';
 
 class HomeScreen extends Component {
 
+  static navigationOptions = {
+    title: 'Home Screen'
+  }
+
   state = {
     random: [20, 837]
   };

@@ -10,6 +10,19 @@ import {
 } from 'react-native';
 
 class UserScreen extends Component {
+
+  static navigationOptions = {
+    title:'Users',
+    // below made generix to all headers on App.js:
+    // headerStyle: {
+    //   backgroundColor: '#f4511e'
+    // },
+    // headerTintColor:'blue',
+    // headerTitleStyle: {
+    //   fontWeight: 'bold',
+    //   color: 'white'
+    // }
+  }
   
   render() {
 

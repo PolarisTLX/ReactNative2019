@@ -28,13 +28,35 @@ class App extends Component {
 
 const AppNavigator = createStackNavigator({
   Home: {
-    screen: HomeScreen
+    screen: HomeScreen,
+    // can also come here to apply style to just the home screen navbar:
+    // navigationOptions: ({ navigation }) => ({
+    //   title: `Home`,
+    // }),
   },
   Users: {
     screen: UserScreen
   }
 },{
-  initialRouteName: 'Home'
+  initialRouteName: 'Home',
+  // to apply uniform header style to all screens:
+  defaultNavigationOptions: {
+    headerStyle: {
+      backgroundColor: '#f4511e'
+    },
+    headerTintColor:'blue',
+    headerTitleStyle: {
+      flex: 1,
+      textAlign: 'center',
+      fontWeight: 'bold',
+      color: 'white'
+    }
+  },
+  // mode: 'modal',  //does not work on android
+  onTransitionStart:() => { 
+    alert("This is a Navigation 'onTransitionStart' function") 
+  }
+
 })
 
 const styles = StyleSheet.create({
