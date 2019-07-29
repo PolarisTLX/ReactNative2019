@@ -7,51 +7,35 @@ import {
   Text,
   StatusBar,
 } from 'react-native';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
-
-import Generator from './src/generator';
-import ListItem from './src/listItem';
+import HomeScreen from './src/home';
+import UserScreen from './src/users';
 
 
 class App extends Component {
-
-  state = {
-    random: [20, 837]
-  };
-
-  onAddRandom = () => {
-    const random = Math.floor(Math.random()*100)+1;
-    this.setState(prevState => {
-      return {
-        random:[...prevState.random, random]
-      };
-    });
-  };
-
-  deleteItem = (position) => {
-    // alert(index);
-    const newArray = this.state.random.filter((item, index) => {
-      return position != index
-    })
-    this.setState({
-      random:newArray
-    })
-  }
 
   render() {
     return (
       <View style={styles.mainView}>
         <SafeAreaView>
-          <Generator add={this.onAddRandom} />
-          <ListItem 
-            items={this.state.random}
-            delete={this.deleteItem}
-          />
+
         </SafeAreaView>
       </View>
     );
   }
 };
+
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen
+  },
+  Users: {
+    screen: UserScreen
+  }
+},{
+  initialRouteName: 'Home'
+})
 
 const styles = StyleSheet.create({
   mainView: {
@@ -61,4 +45,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default App;
+export default createAppContainer(AppNavigator);
