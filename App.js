@@ -6,6 +6,7 @@ import {
   View,
   Text,
   StatusBar,
+  Image
 } from 'react-native';
 import { createStackNavigator, createBottomTabNavigator, createAppContainer } from 'react-navigation';
 
@@ -27,8 +28,17 @@ class App extends Component {
   }
 };
 
+// check the curly braces all match!!!
 const AppNavigator = createBottomTabNavigator({
-  Home: HomeScreen,
+  // Home: HomeScreen,
+  // Users:UserScreen,
+  // to expant on a screen specifically:
+  Home: {
+    screen: HomeScreen,
+    navigationOptions: ({ navigation }) => ({
+      //.....
+    })
+  },
   Users:UserScreen,
 }, {
   initialRouteName:'Home',
@@ -48,7 +58,24 @@ const AppNavigator = createBottomTabNavigator({
       paddingBottom: 10      
     }
   },
-  defaultNavigationOptions:()=>({
+    defaultNavigationOptions: ({navigation})=>({
+
+      //not working:      
+      tabBarIcon:({focused,horizontal,tintColor})=>{
+        return <Image 
+                  source={LogoTitle} 
+                  style={{width:30, height:30}}
+                />
+
+        // // also there is way to make a different icon in each navbutton
+        // if(routeName === 'Users'){
+        //   //return some image
+        // } else {
+        //   //return some other image
+        // }
+      },
+
+
     // how to capture info on where the User is going and perform actions based on that:
     tabBarOnPress:({navigation, defaultHandler})=>{
       alert(navigation)
@@ -61,7 +88,7 @@ const AppNavigator = createBottomTabNavigator({
         // perhaps check if they are authenticated.  
         // if they are not, can re-direct them to the login screen.
 
-        alert('Hello')
+        //alert('Hello')
 
         navigation.navigate('Users')
       } else {
